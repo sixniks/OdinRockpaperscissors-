@@ -45,29 +45,61 @@ cpuScissors = false
 }
 
 
-function getHumanChoice(){
-  let userInput = prompt("Enter rock, paper, or scissors")
-    if(userInput.toLowerCase()==="rock"){
-        humanRock = true
-        // console.log("rock")
-    }
-    else if(userInput.toLowerCase()==="paper"){
-        humanPaper = true
-        // console.log("paper")
-    }
-    else if(userInput.toLowerCase()==="scissors"){
-        humanScissors = true
-        // console.log("scissors")
-    }
-    else{
-        prompt("Please refresh the page and enter with correct spellinga")
-        humanRock = false
-        humanPaper = false
-        humanScissors = false
-    }
+// function getHumanChoice(){
+//   let userInput = prompt("Enter rock, paper, or scissors")
+//     if(userInput.toLowerCase()==="rock"){
+//         humanRock = true
+//         // console.log("rock")
+//     }
+//     else if(userInput.toLowerCase()==="paper"){
+//         humanPaper = true
+//         // console.log("paper")
+//     }
+//     else if(userInput.toLowerCase()==="scissors"){
+//         humanScissors = true
+//         // console.log("scissors")
+//     }
+//     else{
+//         prompt("Please refresh the page and enter with correct spellinga")
+//         humanRock = false
+//         humanPaper = false
+//         humanScissors = false
+//     }
 
 
-}
+// }
+
+const rock=document.querySelector(".rock")
+const paper=document.querySelector(".paper")
+const scissors=document.querySelector(".scissors")
+
+
+
+rock.addEventListener("click", function(){
+    humanRock = true
+    humanPaper=false
+    humanScissors=false
+    playGame()
+
+
+})
+paper.addEventListener("click", function(){
+    humanRock = false
+    humanPaper=true
+    humanScissors=false
+
+    playGame()
+
+})
+scissors.addEventListener("click", function(){
+    humanRock = false
+    humanPaper=false
+    humanScissors=true
+
+    playGame()
+
+
+})
 
 
 
@@ -127,25 +159,33 @@ else if(cpuScissors&&humanScissors){
     alert("Human Scissors, Cpu Scissors, Draw")
          console.log(computerScore,humanScore)
 }
+const h3Cpu=document.querySelector(".Computerscore")
+const h3Human=document.querySelector(".Humanscore")
+h3Cpu.innerText=computerScore;
+h3Human.innerText=humanScore;
 
 }
 function playGame(){
-    getHumanChoice();
+    // getHumanChoice();
     getComputerChoice();
     playRound();
+    if(humanScore>=5){
+        humanScore=0
+        computerScore=0
+        alert("You win!")
+       
+        
+    }
+    else if(computerScore>=5){
+        humanScore=0
+        computerScore=0
+        alert("You lose")
+       
+    }
 }
 
-playGame()
-playGame()
-playGame()
-playGame()
-playGame()
-playGame()
 
 
 
 
 
-// getHumanChoice()
-// getComputerChoice()
-// playRound()
